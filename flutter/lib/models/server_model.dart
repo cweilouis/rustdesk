@@ -416,7 +416,7 @@ class ServerModel with ChangeNotifier {
     //     startService();
     //   }
     // }
-       startService();
+    startService();
   }
 
   /// Start the screen sharing service.
