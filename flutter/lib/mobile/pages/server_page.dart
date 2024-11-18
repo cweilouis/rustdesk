@@ -660,16 +660,16 @@ class ConnectionManager extends StatelessWidget {
                                       client.unreadChatMessageCount)))
                     ],
                   ),
-                  // client.authorized
-                  //     ? const SizedBox.shrink()
-                  //     : Text(
-                  //         translate("android_new_connection_tip"),
-                  //         style: Theme.of(context).textTheme.bodyMedium,
-                  //       ).marginOnly(bottom: 5),
-                  // client.authorized
-                  //     ? _buildDisconnectButton(client)
-                  //     : _buildNewConnectionHint(serverModel, client),
-                  _buildNewConnectionHint(serverModel, client),
+                  client.authorized
+                      ? const SizedBox.shrink()
+                      : Text(
+                          translate("android_new_connection_tip"),
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ).marginOnly(bottom: 5),
+                  client.authorized
+                      ? _buildDisconnectButton(client)
+                      : _buildNewConnectionHint(serverModel, client),
+                  // _buildNewConnectionHint(serverModel, client),
                   if (client.incomingVoiceCall && !client.inVoiceCall)
                     ..._buildNewVoiceCallHint(context, serverModel, client),
                 ])))
