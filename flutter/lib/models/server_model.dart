@@ -362,6 +362,7 @@ class ServerModel with ChangeNotifier {
   /// Toggle the screen sharing service.
   toggleService() async {
     if (_isStart) {
+        stopService();
       // final res = await parent.target?.dialogManager
       //     .show<bool>((setState, close, context) {
       //   submit() => close(true);
@@ -384,7 +385,6 @@ class ServerModel with ChangeNotifier {
       // if (res == true) {
       //   stopService();
       // }
-      stopService();
     } else {
       await checkRequestNotificationPermission();
       if (bind.mainGetLocalOption(key: kOptionDisableFloatingWindow) != 'Y') {
@@ -393,6 +393,7 @@ class ServerModel with ChangeNotifier {
       if (!await AndroidPermissionManager.check(kManageExternalStorage)) {
         await AndroidPermissionManager.request(kManageExternalStorage);
       }
+      startService();
     //   final res = await parent.target?.dialogManager
     //       .show<bool>((setState, close, context) {
     //     submit() => close(true);
@@ -416,7 +417,6 @@ class ServerModel with ChangeNotifier {
     //     startService();
     //   }
     // }
-    startService();
   }
 
   /// Start the screen sharing service.
